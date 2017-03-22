@@ -136,7 +136,7 @@ class Curl extends Client
     private function prepareHeaders()
     {
         $headers = array(
-            'Connection: close',
+            // 'Connection: close',
         );
 
         if ($this->etag) {
