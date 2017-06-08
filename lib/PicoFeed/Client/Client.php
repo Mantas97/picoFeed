@@ -214,7 +214,6 @@ abstract class Client
         Logger::setMessage(get_called_class().' Fetch URL: '.$this->url);
         Logger::setMessage(get_called_class().' Etag provided: '.$this->etag);
         Logger::setMessage(get_called_class().' Last-Modified provided: '.$this->last_modified);
-
         $response = $this->doRequest();
 
         $this->status_code = $response['status'];
@@ -693,9 +692,11 @@ abstract class Client
                 return new DateTime('+' . $matches[1] . ' seconds');
             }
         }
-
         if (! empty($headers['Expires'])) {
-            return new DateTime($headers['Expires']);
+            // deal with DateTime errors so it would not bubble-up into the application level
+            try {
+                return new DateTime($headers['Expires']);
+            } catch(\Exception $e) {}
         }
 
         return new DateTime();
