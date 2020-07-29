@@ -43,6 +43,7 @@ class Rss20FeedBuilder extends FeedBuilder
         $this->rssElement->setAttribute('version', '2.0');
         $this->rssElement->setAttributeNodeNS(new DomAttr('xmlns:content', 'http://purl.org/rss/1.0/modules/content/'));
         $this->rssElement->setAttributeNodeNS(new DomAttr('xmlns:atom', 'http://www.w3.org/2005/Atom'));
+        $this->rssElement->setAttributeNodeNS(new DomAttr('xmlns:media', 'http://search.yahoo.com/mrss/'));
 
         $this->channelElement = $this->getDocument()->createElement('channel');
         $this->helper
