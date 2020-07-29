@@ -47,6 +47,25 @@ class Rss20Helper
     }
 
     /**
+     * Build tag
+     *
+     * @access public
+     * @param  DOMElement $element
+     * @param  string     $tag
+     * @param  array      $attributes
+     * @return $this
+     */
+    public function buildTag(DOMElement $element, $tag, $attributes)
+    {
+        $node = $this->document->createElement($tag);
+        foreach ($attributes as $key => $value){
+            $node->setAttribute($key, $value);
+        }
+        $element->appendChild($node);
+        return $this;
+    }
+
+    /**
      * Build title
      *
      * @access public

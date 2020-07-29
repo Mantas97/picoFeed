@@ -56,6 +56,12 @@ class Rss20ItemBuilder extends ItemBuilder
             $this->helper->buildNode($this->itemElement, 'description', $this->itemSummary);
         }
 
+        if (!empty($this->itemMedia)) {
+            foreach ($this->itemMedia as $key => $value){
+                $this->helper->buildTag($this->itemElement, 'media:' . $key, $value);
+            }
+        }
+
         if (!empty($this->itemContent)) {
             $node = $this->feedBuilder->getDocument()->createElement('content:encoded');
             $node->appendChild($this->feedBuilder->getDocument()->createCDATASection($this->itemContent));

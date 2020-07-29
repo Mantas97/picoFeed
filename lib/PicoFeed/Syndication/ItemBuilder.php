@@ -64,6 +64,11 @@ abstract class ItemBuilder
     protected $itemUrl;
 
     /**
+     * @var array
+     */
+    protected $itemMedia;
+
+    /**
      * @var FeedBuilder
      */
     protected $feedBuilder;
@@ -113,6 +118,19 @@ abstract class ItemBuilder
     public function withId($id)
     {
         $this->itemId = $id;
+        return $this;
+    }
+
+    /**
+     * Add media item
+     *
+     * @access public
+     * @param  array $media
+     * @return $this
+     */
+    public function withMedia($media)
+    {
+        $this->itemMedia = $media;
         return $this;
     }
 
